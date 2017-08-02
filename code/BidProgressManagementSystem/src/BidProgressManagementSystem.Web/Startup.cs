@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using BidProgressManagementSystem.EntityFramework;
+using MySQL.Data.EntityFrameworkCore.Extensions;
 
 namespace BidProgressManagementSystem
 {
@@ -17,16 +19,19 @@ namespace BidProgressManagementSystem
 
         public Startup(IHostingEnvironment env)
         {
-			var builder = new ConfigurationBuilder()
-				.SetBasePath(env.ContentRootPath)
-				.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-				.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+            var builder = new ConfigurationBuilder().SetBasePath(env.ContentRootPath).AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+            builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var sqlConnectionString = Configuration.GetConnectionString("Default");
+
+            //添加数据上下文
+            services.AddDbContext<MyDBContext>(options =>options.UseMySQL(Configuration.GetConnectionString("MySql")));
+
             services.AddMvc();
         }
 

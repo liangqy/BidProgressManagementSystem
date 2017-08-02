@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BidProgressManagementSystem.EntityFramework
+namespace BidProgressManagementSystem.EntityFramework.Entities
 {
     /// <summary>
     /// 用户角色关系
