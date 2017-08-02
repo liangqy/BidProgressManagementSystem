@@ -71,5 +71,9 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BidProgressManagementSystem.Application\BidProgressManagementSystem.Application.csproj" />
+    <ProjectReference Include="..\BidProgressManagementSystem.EntityFramework\BidProgressManagementSystem.EntityFramework.csproj" />
+  </ItemGroup>
 
 </Project>
