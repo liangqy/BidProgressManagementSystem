@@ -1,18 +1,19 @@
-﻿
+﻿using Npgsql.EntityFrameworkCore.PostgreSQL;
 using BidProgressManagementSystem.EntityFramework.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BidProgressManagementSystem.EntityFramework
 {
     public  class MyDBContext: DbContext
     {
-        public MyDBContext(DbContextOptions<MyDBContext> options) : base(options)
-        {
 
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql("Server=localhost;User Id=lqy;Password=1239551904;Database=bid-mis-sys;");
         }
+
+
         public DbSet<UserBid> UserBids { get; set; }
         public DbSet<BidStatus> BidStatuses { get; set; }
         public DbSet<BidBidStatus> BidBidStatuses { get; set; }
@@ -36,11 +37,12 @@ namespace BidProgressManagementSystem.EntityFramework
             builder.Entity<UserBid>().HasOne(ub => ub.User).WithMany(u => u.UserBids).HasForeignKey(ub => ub.UserId).HasForeignKey(ub => ub.BidId);
 
             //BidBidStatus关联配置
-            builder.Entity<BidBidStatus>().HasKey(bbs => new { bbs.BidId, bbs.StatusChangeTime ,bbs.StatusNow,bbs.LastStatus});
+            builder.Entity<BidBidStatus>().HasKey(bbs => new { bbs.BidId, bbs.StatusChangeTime ,bbs.StatusNowId,bbs.LastStatusId});
             builder.Entity<BidBidStatus>().HasOne(bbs => bbs.Bid).WithMany(bbs => bbs.BidBidStatuses).HasForeignKey(bbs => bbs.BidId).HasForeignKey(bbs => bbs.LastStatusId).HasForeignKey(bbs => bbs.StatusNowId);
 
+          
             //启用Guid主键类型扩展
-            //builder.HasPostgresExtension("uuid-ossp");
+            builder.HasPostgresExtension("uuid-ossp");
 
             base.OnModelCreating(builder);
         }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,7 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using BidProgressManagementSystem.EntityFramework;
-using MySQL.Data.EntityFrameworkCore.Extensions;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace BidProgressManagementSystem
 {
@@ -30,7 +28,7 @@ namespace BidProgressManagementSystem
             var sqlConnectionString = Configuration.GetConnectionString("Default");
 
             //添加数据上下文
-            services.AddDbContext<MyDBContext>(options =>options.UseMySQL(Configuration.GetConnectionString("MySql")));
+            services.AddDbContext<MyDBContext>(options =>options.UseNpgsql(sqlConnectionString));
 
             services.AddMvc();
         }
