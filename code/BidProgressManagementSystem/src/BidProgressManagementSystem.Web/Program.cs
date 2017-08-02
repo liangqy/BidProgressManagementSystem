@@ -5,8 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using BidProgressManagementSystem.EntityFramework;
-using Microsoft.EntityFrameworkCore;
+using MySQL.Data.EntityFrameworkCore;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace BidProgressManagementSystem
 {
@@ -25,6 +26,7 @@ namespace BidProgressManagementSystem
                 .Build();
 
             host.Run();
+
 
 		}
 
