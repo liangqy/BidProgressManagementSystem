@@ -37,6 +37,6 @@ namespace BidProgressManagementSystem.EntityFramework.Entities
         /// <summary>
         /// 标状态集合
         /// </summary>
-        public virtual ICollection<BidBidStatus> BidBidStatuses { set; get; }
+        //public virtual ICollection<BidBidStatus> BidBidStatuses { set; get; }
     }
 }

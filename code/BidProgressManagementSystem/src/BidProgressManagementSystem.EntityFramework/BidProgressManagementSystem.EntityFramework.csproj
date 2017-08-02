@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="EntityFramework\**" />
     <Compile Remove="Migrations\**" />
+    <EmbeddedResource Remove="EntityFramework\**" />
     <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="EntityFramework\**" />
     <None Remove="Migrations\**" />
   </ItemGroup>
 
@@ -19,10 +22,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.2" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="4.4.0" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="EntityFramework\" />
   </ItemGroup>
 
 </Project>

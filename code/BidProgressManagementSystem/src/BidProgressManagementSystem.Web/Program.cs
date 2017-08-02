@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using BidProgressManagementSystem.EntityFramework;
-using MySQL.Data.EntityFrameworkCore;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +14,7 @@ namespace BidProgressManagementSystem
     {
         public static void Main(string[] args)
         {
-			//PrintData();
+			CreateDatabase();
 
 			var host = new WebHostBuilder()
                 .UseKestrel()
@@ -26,26 +25,15 @@ namespace BidProgressManagementSystem
                 .Build();
 
             host.Run();
-
-
 		}
 
-		private static void PrintData()
+		private static void CreateDatabase()
 		{
-			// Gets and prints all books in database
-			using (var context = new LibraryContext())
+			using (var context = new MyDBContext())
 			{
-				var books = context.Book
-				  .Include(p => p.Publisher);
-				foreach (var book in books)
-				{
-					var data = new StringBuilder();
-					data.AppendLine($"ISBN: {book.ISBN}");
-					data.AppendLine($"Title: {book.Title}");
-					data.AppendLine($"Publisher: {book.Publisher.Name}");
-					Console.WriteLine(data.ToString());
-				}
+				context.Database.EnsureCreated();
 			}
 		}
+
 	}
 }
