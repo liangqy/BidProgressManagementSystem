@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace BidProgressManagementSystem.EntityFramework
+namespace BidProgressManagementSystem.EntityFramework.Entities
 {
-    public class Role : Entity
+    /// <summary>
+    /// 标的状态
+    /// </summary>
+    public class BidStatus:Entity
     {
         /// <summary>
-        /// 角色名
+        /// 状态名称
         /// </summary>
         public string Name { get; set; }
         /// <summary>
-        /// 创建用户id
+        /// 创建人id
         /// </summary>
         public Guid CreateUserId { get; set; }
         /// <summary>
@@ -23,9 +25,5 @@ namespace BidProgressManagementSystem.EntityFramework
         /// 备注
         /// </summary>
         public string Remarks { get; set; }
-        /// <summary>
-        /// 菜单集合
-        /// </summary>
-        public virtual ICollection<RoleMenu> RoleMenus { get; set; }
     }
 }

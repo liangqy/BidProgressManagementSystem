@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BidProgressManagementSystem.EntityFramework.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -65,5 +66,8 @@ namespace BidProgressManagementSystem.EntityFramework
         /// 角色集合
         /// </summary>
         public virtual ICollection<UserRole> UserRoles { get; set; }
+
+        public virtual ICollection<UserBid> UserBids { get; set; }
+
     }
 }
