@@ -49,6 +49,7 @@ namespace BidProgressManagementSystem.EntityFramework.Entities
         /// <summary>
         /// 投标保证金
         /// </summary>
+        
         public decimal BidSecurityFees { set; get; }
         /// <summary>
         /// 保证金收款账户
@@ -99,6 +100,10 @@ namespace BidProgressManagementSystem.EntityFramework.Entities
         /// 备注
         /// </summary>
         public string Remark { get; set; }
+        /// <summary>
+        /// 用户集合
+        /// </summary>
+        public ICollection<UserProject> UserProjects { set; get; }
     }
 
     public enum BidStatus {

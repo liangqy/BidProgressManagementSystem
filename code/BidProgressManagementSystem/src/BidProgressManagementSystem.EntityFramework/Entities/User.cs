@@ -65,7 +65,9 @@ namespace BidProgressManagementSystem.EntityFramework.Entities
         /// 角色集合
         /// </summary>
         public virtual ICollection<UserRole> UserRoles { get; set; }
-
+        /// <summary>
+        /// 项目集合
+        /// </summary>
         public virtual ICollection<UserProject> UserProjects { get; set; }
 
     }

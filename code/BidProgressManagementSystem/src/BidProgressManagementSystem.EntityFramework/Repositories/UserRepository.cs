@@ -37,6 +37,5 @@ namespace BidProgressManagementSystem.EntityFramework.Repositories
             }
             return user;
         }
-
     }
 }
