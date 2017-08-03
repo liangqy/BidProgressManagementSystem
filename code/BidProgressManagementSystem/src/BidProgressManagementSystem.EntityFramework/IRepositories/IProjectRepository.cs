@@ -7,5 +7,6 @@ namespace BidProgressManagementSystem.EntityFramework.IRepositories
 {
     public interface IProjectRepository:IRepository<Project>
     {
+        Project GetWithUsers(Guid id);
     }
 }
