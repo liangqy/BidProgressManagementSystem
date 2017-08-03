@@ -7,7 +7,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using BidProgressManagementSystem.EntityFramework;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace BidProgressManagementSystem
 {
@@ -57,7 +58,12 @@ namespace BidProgressManagementSystem
 
             app.UseStaticFiles();
 
-            app.UseMvc(routes =>
+			app.UseStaticFiles(new StaticFileOptions()
+			{
+				FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory())
+			});
+
+			app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",

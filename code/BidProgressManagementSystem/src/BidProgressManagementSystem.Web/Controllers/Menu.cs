@@ -15,5 +15,16 @@ namespace BidProgressManagementSystem.Web.Controllers
         {
             return View();
         }
-    }
+
+		/// <summary>
+		/// 新增或编辑功能
+		/// </summary>
+		/// <param name="dto"></param>
+		/// <returns></returns>
+		public IActionResult Edit()
+		{
+			return Json(new { Result = "Success" });
+		}
+
+	}
 }
