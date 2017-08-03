@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BidProgressManagementSystem.Controllers
 {
-    public class HomeController : Controller
-    {
+    public class HomeController : BaseController
+	{
         public IActionResult Index()
         {
             return View();
