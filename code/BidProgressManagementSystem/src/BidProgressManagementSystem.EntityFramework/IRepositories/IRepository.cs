@@ -18,7 +18,7 @@ namespace BidProgressManagementSystem.EntityFramework.IRepositories
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TPrimaryKey">主键类型</typeparam>
-    public interface IRepository<TEntity, TPrimaryKey> : IRepository where TEntity : Entity<TPrimaryKey>
+    public interface IRepository<TEntity, TPrimaryKey> : IRepository where TEntity : BaseModel<TPrimaryKey>
     {
         /// <summary>
         /// 获取实体集合
@@ -109,7 +109,7 @@ namespace BidProgressManagementSystem.EntityFramework.IRepositories
     /// 默认Guid主键类型仓储
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public interface IRepository<TEntity> : IRepository<TEntity, Guid> where TEntity : Entity
+    public interface IRepository<TEntity> : IRepository<TEntity, Guid> where TEntity : BaseModel
     {
 
     }

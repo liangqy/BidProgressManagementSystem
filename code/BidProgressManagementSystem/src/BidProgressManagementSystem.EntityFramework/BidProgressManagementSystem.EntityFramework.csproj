@@ -12,7 +12,9 @@
     <None Remove="EntityFramework\**" />
     <None Remove="Migrations\**" />
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\BidProgressManagementSystem.EntityFramework\BidProgressManagementSystem.EntityFramework.csproj" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.1" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="1.1.1" />

@@ -1,9 +1,7 @@
 ﻿using BidProgressManagementSystem.EntityFramework.Entities;
 using BidProgressManagementSystem.EntityFramework.IRepositories;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BidProgressManagementSystem.EntityFramework.Repositories
 {
@@ -12,7 +10,7 @@ namespace BidProgressManagementSystem.EntityFramework.Repositories
         public UserRepository(MyDBContext dbContext) : base(dbContext)
         {
         }
-
+        
         public User CheckUser(string userName, string password)
         {
             return _dbContext.Set<User>().FirstOrDefault(it => it.UserName == userName && it.Password == password);
@@ -37,5 +35,11 @@ namespace BidProgressManagementSystem.EntityFramework.Repositories
             }
             return user;
         }
-    }
+        //static void main(string[] args)
+        //{
+        //    var context = new MyDBContext();
+        //    var userrepository = new UserRepository(context);
+        //    Console.WriteLine(userrepository.CheckUser("admin", "123456"));
+        //}
+    }  
 }

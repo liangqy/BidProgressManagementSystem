@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BidProgressManagementSystem.EntityFramework.Entities
+namespace BidProgressManagementSystem.EntityFramework
 {
     /// <summary>
     /// 用户标关系

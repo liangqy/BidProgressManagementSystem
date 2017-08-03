@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BidProgressManagementSystem.EntityFramework.Entities
+namespace BidProgressManagementSystem.EntityFramework
 {
-    public class Project : Entity
+    public class Project : BaseModel
     {
         /// <summary>
         /// 项目编号

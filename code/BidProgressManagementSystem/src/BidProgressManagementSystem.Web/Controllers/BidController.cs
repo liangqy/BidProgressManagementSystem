@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BidProgressManagementSystem.Controllers
+namespace BidProgressManagementSystem.Web.Controllers
 {
     public class BidController : Controller
     {

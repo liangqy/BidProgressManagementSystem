@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BidProgressManagementSystem.EntityFramework.Entities
+namespace BidProgressManagementSystem.EntityFramework
 {
     /// <summary>
     /// 功能菜单实体
     /// </summary>
-    public class Menu : Entity
+    public class Menu : BaseModel
     {
         /// <summary>
         /// 父级ID

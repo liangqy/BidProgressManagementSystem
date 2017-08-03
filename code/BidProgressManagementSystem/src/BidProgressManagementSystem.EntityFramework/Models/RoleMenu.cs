@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BidProgressManagementSystem.EntityFramework.Entities
+namespace BidProgressManagementSystem.EntityFramework
 {
     /// <summary>
-    /// 用户角色关系
+    /// 角色菜单关系
     /// </summary>
-    public class UserRole
+    public class RoleMenu
     {
-        public Guid UserId { get; set; }
-        public User User { get; set; }
         public Guid RoleId { get; set; }
         public Role Role { get; set; }
-
+        public Guid MenuId { get; set; }
+        public Menu Menu { get; set; }
     }
 }

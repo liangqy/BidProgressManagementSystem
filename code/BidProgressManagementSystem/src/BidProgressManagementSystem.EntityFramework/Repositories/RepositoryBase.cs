@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace BidProgressManagementSystem.EntityFramework.Repositories
 {
-    public abstract class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : Entity<TPrimaryKey>
+    public abstract class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : BaseModel<TPrimaryKey>
     {
         protected readonly MyDBContext _dbContext;
         /// <summary>
@@ -186,7 +186,7 @@ namespace BidProgressManagementSystem.EntityFramework.Repositories
         }
     }
 
-    public abstract class RepositoryBase<TEntity> : RepositoryBase<TEntity, Guid> where TEntity : Entity
+    public abstract class RepositoryBase<TEntity> : RepositoryBase<TEntity, Guid> where TEntity : BaseModel
     {
         public RepositoryBase(MyDBContext dbContext) : base(dbContext)
         {

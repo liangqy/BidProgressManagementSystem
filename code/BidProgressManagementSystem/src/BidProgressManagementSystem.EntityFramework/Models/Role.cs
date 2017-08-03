@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BidProgressManagementSystem.EntityFramework.Entities
+namespace BidProgressManagementSystem.EntityFramework
 {
-    public class Role : Entity
+    public class Role : BaseModel
     {
         /// <summary>
         /// 角色名
