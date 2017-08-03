@@ -1,8 +1,6 @@
 ﻿using Npgsql.EntityFrameworkCore.PostgreSQL;
 using BidProgressManagementSystem.EntityFramework.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using System;
 
 namespace BidProgressManagementSystem.EntityFramework
 {
@@ -15,17 +13,15 @@ namespace BidProgressManagementSystem.EntityFramework
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseNpgsql("User ID=postgres;Password=BidDb;Host=localhost;Port=5432;Database=postgres;Pooling=true;");
+			optionsBuilder.UseNpgsql("User ID=postgres;Password=secret;Host=localhost;Port=5432;Database=bis-mis-sys;Pooling=true;");
 		}
 
 		public MyDBContext()
 		{
 		}
 
-		public DbSet<UserBid> UserBids { get; set; }
-		public DbSet<BidStatus> BidStatuses { get; set; }
-		//public DbSet<BidBidStatus> BidBidStatuses { get; set; }
-		public DbSet<Bid> Bids { get; set; }
+        public DbSet<UserProject> UserBids { get; set; }
+		public DbSet<Project> Projects { get; set; }
 		public DbSet<Menu> Menus { get; set; }
 		public DbSet<Role> Roles { get; set; }
 		public DbSet<User> Users { get; set; }
@@ -46,8 +42,18 @@ namespace BidProgressManagementSystem.EntityFramework
 			  .WithMany(r => r.RoleMenus)
 			  .HasForeignKey(rm => rm.RoleId).HasForeignKey(rm => rm.MenuId);
 
-			//启用Guid主键类型扩展
-			builder.HasPostgresExtension("uuid-ossp");
+            //UserProject关联配置
+            builder.Entity<UserProject>()
+                .HasKey(up => new { up.UserId, up.ProjectId });
+            builder.Entity<UserProject>()
+               .HasOne(u => u.User)
+               .WithMany(u => u.UserProjects)
+               .HasForeignKey(up => up.UserId).HasForeignKey(up => up.ProjectId);
+
+           // builder.Entity<BidBidStatus>().HasKey(bbs=>new {bbs.userid,bbs.laststatusid })
+
+            //启用Guid主键类型扩展
+            builder.HasPostgresExtension("uuid-ossp");
 
 			base.OnModelCreating(builder);
 		}

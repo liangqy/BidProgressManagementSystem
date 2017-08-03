@@ -7,11 +7,11 @@ namespace BidProgressManagementSystem.EntityFramework.Entities
     /// <summary>
     /// 用户标关系
     /// </summary>
-    public class UserBid : Entity
+    public class UserProject
     {
         public Guid UserId { set; get; }
         public User User { set; get; }
-        public Guid BidId { set; get; }
-        public Bid Bid { set; get; }
+        public Guid ProjectId { set; get; }
+        public Project Project { set; get; }
     }
 }
