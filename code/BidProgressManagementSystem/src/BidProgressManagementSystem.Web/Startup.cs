@@ -9,6 +9,7 @@ using BidProgressManagementSystem.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using BidProgressManagementSystem.Application.UserApp;
 
 namespace BidProgressManagementSystem
 {
@@ -37,9 +38,12 @@ namespace BidProgressManagementSystem
             services.AddDbContext<MyDBContext>(options =>
                 options.UseNpgsql(sqlConnectionString)
             );
+            services.AddScoped<IUserRepository,UserRepository>();
+            services.AddScoped<IUserAppService, UserAppService>();
 
             services.AddMvc();
-		}
+            services.AddSession();
+        }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -57,8 +61,10 @@ namespace BidProgressManagementSystem
             //app.UseMvcWithDefaultRoute();
 
             app.UseStaticFiles();
+            //Session
+            app.UseSession();
 
-			app.UseStaticFiles(new StaticFileOptions()
+            app.UseStaticFiles(new StaticFileOptions()
 			{
 				FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory())
 			});
