@@ -20,7 +20,7 @@ namespace BidProgressManagementSystem.EntityFramework
 		{
 		}
 
-        public DbSet<UserProject> UserBids { get; set; }
+        public DbSet<UserProject> UserProjects { get; set; }
 		public DbSet<Project> Projects { get; set; }
 		public DbSet<Menu> Menus { get; set; }
 		public DbSet<Role> Roles { get; set; }
@@ -44,7 +44,7 @@ namespace BidProgressManagementSystem.EntityFramework
 
             //UserProject关联配置
             builder.Entity<UserProject>()
-                .HasKey(up => new { up.UserId, up.ProjectId });
+                .HasKey(up => new { up.UserId, up.ProjectId,up.Responsibility });
             builder.Entity<UserProject>()
                .HasOne(u => u.User)
                .WithMany(u => u.UserProjects)

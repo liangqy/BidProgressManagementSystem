@@ -31,21 +31,21 @@ namespace BidProgressManagementSystem.EntityFramework.Entities
         /// 投标时间
         /// </summary>
         public DateTime? BidTime { set; get; }
-        /// <summary>
-        /// 项目负责人
-        /// </summary>
-        public string PorjectAdminName { set; get; }
-        public Guid PorjectAdminId { set; get; }
-        /// <summary>
-        /// 投标负责人
-        /// </summary>
-        public string BidAdminName { set; get; }
-        public Guid BidAdminId { set; get; }
-        /// <summary>
-        /// 投保参与人
-        /// </summary>
-        public String InsuranceAdminName { set; get; }
-        public Guid InsuranceAdminId { set; get; }
+        ///// <summary>
+        ///// 项目负责人
+        ///// </summary>
+        //public string PorjectAdminName { set; get; }
+        //public Guid PorjectAdminId { set; get; }
+        ///// <summary>
+        ///// 投标负责人
+        ///// </summary>
+        //public string BidAdminName { set; get; }
+        //public Guid BidAdminId { set; get; }
+        ///// <summary>
+        ///// 投保参与人
+        ///// </summary>
+        //public String InsuranceAdminName { set; get; }
+        //public Guid InsuranceAdminId { set; get; }
         /// <summary>
         /// 投标保证金
         /// </summary>
@@ -108,6 +108,7 @@ namespace BidProgressManagementSystem.EntityFramework.Entities
         中标待启动=3,
         进行中未退保证金=4,
         进行中保证金已退=5,
-        结项=6
+        结项=6,
+        其他=7
     }
 }
