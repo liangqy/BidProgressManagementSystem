@@ -1,21 +1,20 @@
-﻿using BidProgressManagementSystem.EntityFramework.IRepositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace BidProgressManagementSystem.EntityFramework.Repositories
+namespace BidProgressManagementSystem.EntityFramework
 {
-    public abstract class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : BaseModel<TPrimaryKey>
+    public abstract class BaseRepository<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : BaseModel<TPrimaryKey>
     {
         protected readonly MyDBContext _dbContext;
         /// <summary>
         /// 通过构造函数注入得到数据上下文对象实例
         /// </summary>
         /// <param name="dbContext"></param>
-        public RepositoryBase(MyDBContext dbContext)
+        public BaseRepository(MyDBContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -186,9 +185,9 @@ namespace BidProgressManagementSystem.EntityFramework.Repositories
         }
     }
 
-    public abstract class RepositoryBase<TEntity> : RepositoryBase<TEntity, Guid> where TEntity : BaseModel
+    public abstract class BaseRepository<TEntity> : BaseRepository<TEntity, Guid> where TEntity : BaseModel
     {
-        public RepositoryBase(MyDBContext dbContext) : base(dbContext)
+        public BaseRepository(MyDBContext dbContext) : base(dbContext)
         {
         }
     }

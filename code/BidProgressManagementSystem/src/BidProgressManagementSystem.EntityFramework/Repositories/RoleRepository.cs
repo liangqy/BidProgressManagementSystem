@@ -1,13 +1,11 @@
-﻿using BidProgressManagementSystem.EntityFramework.Entities;
-using BidProgressManagementSystem.EntityFramework.IRepositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace BidProgressManagementSystem.EntityFramework.Repositories
 {
-    public class RoleRepository : RepositoryBase<Role>, IRoleRepository
+    public class RoleRepository : BaseRepository<Role>, IRoleRepository
     {
         public RoleRepository(MyDBContext dbContext) : base(dbContext)
         {

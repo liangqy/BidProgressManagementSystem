@@ -1,5 +1,4 @@
 ﻿using Npgsql.EntityFrameworkCore.PostgreSQL;
-using BidProgressManagementSystem.EntityFramework.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace BidProgressManagementSystem.EntityFramework

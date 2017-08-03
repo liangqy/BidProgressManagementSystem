@@ -1,5 +1,4 @@
 ﻿using BidProgressManagementSystem.EntityFramework;
-using BidProgressManagementSystem.EntityFramework.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Text;

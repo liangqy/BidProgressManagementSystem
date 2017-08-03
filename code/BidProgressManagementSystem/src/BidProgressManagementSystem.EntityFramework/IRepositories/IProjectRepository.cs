@@ -1,9 +1,8 @@
-﻿using BidProgressManagementSystem.EntityFramework.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BidProgressManagementSystem.EntityFramework.IRepositories
+namespace BidProgressManagementSystem.EntityFramework
 {
     public interface IProjectRepository:IRepository<Project>
     {

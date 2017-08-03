@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace BidProgressManagementSystem.EntityFramework.IRepositories
+namespace BidProgressManagementSystem.EntityFramework
 {
     /// <summary>
     /// 仓储接口定义

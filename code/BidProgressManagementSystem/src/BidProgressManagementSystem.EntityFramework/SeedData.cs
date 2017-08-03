@@ -1,5 +1,4 @@
-﻿using BidProgressManagementSystem.EntityFramework.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BidProgressManagementSystem.EntityFramework.IRepositories;
-using BidProgressManagementSystem.EntityFramework.Entities;
 
-namespace BidProgressManagementSystem.EntityFramework.Repositories
+
+namespace BidProgressManagementSystem.EntityFramework
 {
-    public class MenuRepository : RepositoryBase<Menu>, IMenuRepository
+    public class MenuRepository : BaseRepository<Menu>, IMenuRepository
     {
         public MenuRepository(MyDBContext dbContext) : base(dbContext)
         {

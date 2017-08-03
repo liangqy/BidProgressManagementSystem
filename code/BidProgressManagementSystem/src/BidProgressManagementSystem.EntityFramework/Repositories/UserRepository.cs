@@ -1,11 +1,9 @@
-﻿using BidProgressManagementSystem.EntityFramework.Entities;
-using BidProgressManagementSystem.EntityFramework.IRepositories;
-using System;
+﻿using System;
 using System.Linq;
 
-namespace BidProgressManagementSystem.EntityFramework.Repositories
+namespace BidProgressManagementSystem.EntityFramework
 {
-    public class UserRepository : RepositoryBase<User>, IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         public UserRepository(MyDBContext dbContext) : base(dbContext)
         {

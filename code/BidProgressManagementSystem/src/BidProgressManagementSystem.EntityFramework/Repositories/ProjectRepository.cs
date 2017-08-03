@@ -1,13 +1,11 @@
-﻿using BidProgressManagementSystem.EntityFramework.Entities;
-using BidProgressManagementSystem.EntityFramework.IRepositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BidProgressManagementSystem.EntityFramework.Repositories
+namespace BidProgressManagementSystem.EntityFramework
 {
-    public class ProjectRepository : RepositoryBase<Project>, IProjectRepository
+    public class ProjectRepository : BaseRepository<Project>, IProjectRepository
     {
         public ProjectRepository(MyDBContext dbContext) : base(dbContext)
         {
