@@ -20,5 +20,7 @@ namespace BidProgressManagementSystem.EntityFramework.IRepositories
         User CheckUser(string userName, string password);
 
         User GetWithRoles(Guid id);
+
+        User GetWithProjects(Guid id);
     }
 }
