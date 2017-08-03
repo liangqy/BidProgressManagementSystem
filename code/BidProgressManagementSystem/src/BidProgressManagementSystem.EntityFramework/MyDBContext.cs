@@ -36,18 +36,19 @@ namespace BidProgressManagementSystem.EntityFramework
 			//RoleMenu关联配置
 			builder.Entity<RoleMenu>()
 			  .HasKey(rm => new { rm.RoleId, rm.MenuId });
-			builder.Entity<RoleMenu>()
-			  .HasOne(rm => rm.Role)
-			  .WithMany(r => r.RoleMenus)
-			  .HasForeignKey(rm => rm.RoleId).HasForeignKey(rm => rm.MenuId);
+            builder.Entity<RoleMenu>()
+              .HasOne(rm => rm.Role)
+              .WithMany(r => r.RoleMenus)
+              .HasForeignKey(rm => rm.RoleId);
+            
 
-            //UserProject关联配置
+            //UserProject关联配置?????
             builder.Entity<UserProject>()
                 .HasKey(up => new { up.UserId, up.ProjectId,up.Responsibility });
             builder.Entity<UserProject>()
                .HasOne(u => u.User)
                .WithMany(u => u.UserProjects)
-               .HasForeignKey(up => up.UserId).HasForeignKey(up => up.ProjectId);
+               .HasForeignKey(up => up.UserId);
 
            // builder.Entity<BidBidStatus>().HasKey(bbs=>new {bbs.userid,bbs.laststatusid })
 

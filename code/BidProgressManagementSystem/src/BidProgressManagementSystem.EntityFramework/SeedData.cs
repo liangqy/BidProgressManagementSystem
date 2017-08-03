@@ -24,6 +24,19 @@ namespace BidProgressManagementSystem.EntityFramework
                     Name = "超级管理员",
 
                 });
+                context.Users.Add(new User
+                {
+                    UserName = "lqy",
+                    Password = "123456",
+                    Name = "测试管理员",
+
+                });
+                context.Roles.Add(new Role
+                {
+                    Name = "项目管理员",
+                    CreateUserId = new Guid("30104d9a-da47-4ab8-be44-8541428c957a"),
+                    CreateTime = DateTime.Now
+                });
                 context.Projects.Add(new Project
                 {
                     Code = "001",
