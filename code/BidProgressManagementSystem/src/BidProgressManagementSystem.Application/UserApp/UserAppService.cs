@@ -27,46 +27,37 @@ namespace BidProgressManagementSystem.Application.UserApp
         {
             return _repository.CheckUser(userName, password);
         }
-     
 
-        /// <summary>
-        /// 新增或修改
-        /// </summary>
-        /// <param name="dto">实体</param>
-        /// <returns></returns>
-        //public UserDto InsertOrUpdate(UserDto dto)
-        //{
-        //    if (Get(dto.Id) != null)
-        //        _repository.Delete(dto.Id);
-        //    var user = _repository.InsertOrUpdate(Mapper.Map<User>(dto));
-        //    return Mapper.Map<UserDto>(user);
-        //}
-        ///// <summary>
-        ///// 根据Id集合批量删除
-        ///// </summary>
-        ///// <param name="ids">Id集合</param>
-        //public void DeleteBatch(List<Guid> ids)
-        //{
-        //    _repository.Delete(it => ids.Contains(it.Id));
-        //}
+        public void Delete(Guid id)
+        {
+            _repository.Delete(id);
+        }
 
-        ///// <summary>
-        ///// 删除
-        ///// </summary>
-        ///// <param name="id">Id</param>
-        //public void Delete(Guid id)
-        //{
-        //    _repository.Delete(id);
-        //}
+        public void DeleteBatch(List<Guid> ids)
+        {
+            _repository.Delete(it => ids.Contains(it.Id));
+        }
 
-        ///// <summary>
-        ///// 根据Id获取实体
-        ///// </summary>
-        ///// <param name="id">Id</param>
-        ///// <returns></returns>
-        //public UserDto Get(Guid id)
-        //{
-        //    return Mapper.Map<UserDto>(_repository.GetWithRoles(id));
-        //}
+        public User Get(Guid id)
+        {
+            return _repository.Get(id);
+        }
+
+        public List<User> GetAll()
+        {
+            return _repository.GetAllList();
+        }
+
+        public User GetProjects(Guid id)
+        {
+            return _repository.GetWithProjects(id);
+        }
+
+        public User InsertOrUpdate(User user)
+        {
+            if (Get(user.Id) != null)
+                _repository.Delete(user.Id);
+            return _repository.InsertOrUpdate(user);
+        }
     }
 }
