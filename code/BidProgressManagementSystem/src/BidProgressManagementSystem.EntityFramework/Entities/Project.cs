@@ -30,7 +30,7 @@ namespace BidProgressManagementSystem.EntityFramework.Entities
         /// <summary>
         /// 投标时间
         /// </summary>
-        public string BidTime { set; get; }
+        public DateTime? BidTime { set; get; }
         /// <summary>
         /// 项目负责人
         /// </summary>
