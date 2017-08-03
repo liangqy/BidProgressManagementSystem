@@ -33,9 +33,6 @@ namespace BidProgressManagementSystem.EntityFramework
 			builder.Entity<UserRole>().HasKey(ur => new { ur.UserId, ur.RoleId });
             builder.Entity<UserRole>().HasOne(pt => pt.User).WithMany(p => p.UserRoles).HasForeignKey(pt => pt.UserId);
 
-            //builder.Entity<UserRole>().HasOne(ur => ur.User).WithMany(u => u.UserRoles).HasForeignKey(rm => rm.UserId).HasForeignKey;
-
-
             //RoleMenu关联配置
             builder.Entity<RoleMenu>().HasKey(rm => new { rm.RoleId, rm.MenuId });
             builder.Entity<RoleMenu>().HasOne(rm => rm.Role).WithMany(r => r.RoleMenus).HasForeignKey(rm => rm.RoleId);

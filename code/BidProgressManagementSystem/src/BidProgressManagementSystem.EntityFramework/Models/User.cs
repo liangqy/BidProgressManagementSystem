@@ -26,6 +26,8 @@ namespace BidProgressManagementSystem.EntityFramework
         /// </summary>
         public string Name { get; set; }
 
+        public Boolean IsSupervisor { get; set; }
+
         /// <summary>
         /// 邮箱地址
         /// </summary>

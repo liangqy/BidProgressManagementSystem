@@ -21,7 +21,6 @@ namespace BidProgressManagementSystem.EntityFramework.Repositories
             return menuIds.ToList();
 
         }
-
         public bool UpdateRoleMenu(Guid roleId, List<RoleMenu> roleMenus)
         {
             var oldDatas = _dbContext.Set<RoleMenu>().Where(it => it.RoleId == roleId).ToList();

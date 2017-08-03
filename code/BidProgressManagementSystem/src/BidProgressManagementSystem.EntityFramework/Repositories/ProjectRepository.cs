@@ -10,7 +10,7 @@ namespace BidProgressManagementSystem.EntityFramework
         public ProjectRepository(MyDBContext dbContext) : base(dbContext)
         {
         }
-        Project IProjectRepository.GetWithUsers(Guid id)
+        public Project GetWithUsers(Guid id)
         {
             var project = _dbContext.Set<Project>().FirstOrDefault(it => it.Id == id);
             if (project != null)
@@ -19,5 +19,7 @@ namespace BidProgressManagementSystem.EntityFramework
             }
             return project;
         }
+
+       
     }
 }

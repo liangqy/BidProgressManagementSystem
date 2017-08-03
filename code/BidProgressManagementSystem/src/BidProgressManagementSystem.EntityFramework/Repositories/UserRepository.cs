@@ -8,7 +8,6 @@ namespace BidProgressManagementSystem.EntityFramework
         public UserRepository(MyDBContext dbContext) : base(dbContext)
         {
         }
-        
         public User CheckUser(string userName, string password)
         {
             return _dbContext.Set<User>().FirstOrDefault(it => it.UserName == userName && it.Password == password);
@@ -33,11 +32,5 @@ namespace BidProgressManagementSystem.EntityFramework
             }
             return user;
         }
-        //static void main(string[] args)
-        //{
-        //    var context = new MyDBContext();
-        //    var userrepository = new UserRepository(context);
-        //    Console.WriteLine(userrepository.CheckUser("admin", "123456"));
-        //}
     }  
 }
