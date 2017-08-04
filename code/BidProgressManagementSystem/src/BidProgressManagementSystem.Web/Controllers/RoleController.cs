@@ -49,11 +49,15 @@ namespace BidProgressManagementSystem.Web.Controllers
             }
             return Json(new { Result = "Faild" });
         }
-
+        public IActionResult GetAllList() {
+            return Json(_service.GetAllList());
+        }
+        [HttpPost]
         public IActionResult GetAllPageList(int startPage, int pageSize)
         {
             int rowCount = 0;
             var result = _service.GetAllPageList(startPage, pageSize, out rowCount);
+            
             return Json(new
             {
                 rowCount = rowCount,
