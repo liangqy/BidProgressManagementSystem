@@ -30,6 +30,11 @@ namespace BidProgressManagementSystem.EntityFramework
         /// <returns></returns>
         User GetWithProjects(Guid id);
         /// <summary>
+        /// 分页查询用户的项目
+        /// </summary>
+        /// <returns></returns>
+        List<Project> GetProjectsWithPage(Guid id);
+        /// <summary>
         /// 检查是否超管
         /// </summary>
         Boolean CheckSupervisor(Guid id);

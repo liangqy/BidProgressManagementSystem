@@ -25,7 +25,7 @@ namespace BidProgressManagementSystem.Web.Controllers
             return View();
         }
 
-
+        
         public IActionResult Edit(User dto, string roles)
         {
             try
@@ -98,6 +98,24 @@ namespace BidProgressManagementSystem.Web.Controllers
         {
             var dto = _service.Get(id);
             return Json(dto);
+        }
+
+        public IActionResult CheckSupervisor(Guid id) {
+            if (_service.CheckSupervisor(id))
+            {
+                return Json(new
+                {
+                    Result = "True",
+
+                });
+            }
+            else {
+                return Json(new
+                {
+                    Result = "False",
+
+                });
+            }
         }
     }
 }

@@ -43,8 +43,8 @@ namespace BidProgressManagementSystem.Application
         /// <returns></returns>
         public bool InsertOrUpdate(Role role)
         {
-            var menu = _repository.InsertOrUpdate(role);
-            return menu == null ? false : true;
+            var role_v = _repository.InsertOrUpdate(role);
+            return role_v == null ? false : true;
         }
 
         /// <summary>

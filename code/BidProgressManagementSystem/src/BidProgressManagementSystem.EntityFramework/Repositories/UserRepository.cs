@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BidProgressManagementSystem.EntityFramework
@@ -32,9 +33,14 @@ namespace BidProgressManagementSystem.EntityFramework
             }
             return user;
         }
-        public Boolean CheckSupervisor(Guid id) {
+        public bool CheckSupervisor(Guid id) {
             var user = _dbContext.Set<User>().FirstOrDefault(it => it.Id == id);
             return user.IsSupervisor;
+        }
+
+        public List<Project> GetProjectsWithPage(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }  
 }

@@ -42,5 +42,16 @@ namespace BidProgressManagementSystem.Application
         /// <param name="id"></param>
         /// <returns></returns>
         User GetProjects(Guid id);
+        /// <summary>
+        /// 分页查询用户的项目
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="pageStart"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        User GetProjectsWithPage(Guid id, int pageStart, int pageSize);
+
+        bool CheckSupervisor(Guid id);
+
     }
 }

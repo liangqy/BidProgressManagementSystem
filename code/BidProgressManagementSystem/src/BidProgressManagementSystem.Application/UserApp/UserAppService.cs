@@ -51,9 +51,7 @@ namespace BidProgressManagementSystem.Application
         }
 
         public User GetProjects(Guid id)
-        {
-            //if (_repository.CheckSupervisor(id))
-            //    return _projectRepository.GetAllList();
+        {              
             return _repository.GetWithProjects(id);
         }
 
@@ -62,6 +60,16 @@ namespace BidProgressManagementSystem.Application
             if (Get(user.Id) != null)
                 _repository.Delete(user.Id);
             return _repository.InsertOrUpdate(user);
+        }
+
+        public User GetProjectsWithPage(Guid id, int pageStart, int pageSize) {
+            
+        }
+        
+
+        public bool CheckSupervisor(Guid id)
+        {
+            return _repository.CheckSupervisor(id);
         }
     }
 }
