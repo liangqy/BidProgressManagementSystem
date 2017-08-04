@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-
 namespace BidProgressManagementSystem.Application
 {
     public class MenuAppService : IMenuAppService
@@ -22,7 +21,7 @@ namespace BidProgressManagementSystem.Application
 
         public List<Menu> GetAllList()
         {
-			return _menuRepository.GetAllList().OrderBy(it=>it.SerialNumber).ToList();
+            return _menuRepository.GetAllList().OrderBy(it => it.SerialNumber).ToList();
         }
 
         public List<Menu> GetMenusByParent(Guid parentId, int startPage, int pageSize, out int rowCount)
@@ -60,7 +59,7 @@ namespace BidProgressManagementSystem.Application
             List<Menu> result = new List<Menu>();
             var allMenus = _menuRepository.GetAllList(it=>it.Type == 0).OrderBy(it => it.SerialNumber);
             if (_userRepository.CheckSupervisor(userId))
-                return (List<Menu>)allMenus;          
+                return allMenus.ToList();          
             var user = _userRepository.GetWithRoles(userId);
             if (user == null)
                 return result;
@@ -71,7 +70,7 @@ namespace BidProgressManagementSystem.Application
                 menuIds = menuIds.Union(_roleRepository.GetAllMenuListByRole(role.RoleId)).ToList();
             }
             allMenus = allMenus.Where(it => menuIds.Contains(it.Id)).OrderBy(it => it.SerialNumber);
-            return (List<Menu>)(allMenus);
+            return allMenus.ToList();
         }
     }
 }
