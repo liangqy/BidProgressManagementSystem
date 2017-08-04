@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using BidProgressManagementSystem.Utils;
 using BidProgressManagementSystem.Application;
 
-namespace BidProgressManagementSystem.Controllers
+namespace BidProgressManagementSystem.Web.Controllers
 {
     public class LoginController : Controller
     {

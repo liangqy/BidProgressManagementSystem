@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace BidProgressManagementSystem.Controllers
+namespace BidProgressManagementSystem.Web.Controllers
 {
     public class BaseController:Controller
     {
