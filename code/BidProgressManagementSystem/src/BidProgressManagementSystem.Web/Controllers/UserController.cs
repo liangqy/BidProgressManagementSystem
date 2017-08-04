@@ -10,7 +10,7 @@ using BidProgressManagementSystem.EntityFramework;
 
 namespace BidProgressManagementSystem.Web.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserAppService _service;
         private readonly IRoleAppService _roleService;
@@ -122,12 +122,14 @@ namespace BidProgressManagementSystem.Web.Controllers
 		{
 			int rowCount = 0;
 			var result = _service.GetAllPageList(startPage, pageSize, out rowCount);
+			var roles = _roleService.GetAllList();
 
 			return Json(new
 			{
 				rowCount = rowCount,
 				pageCount = Math.Ceiling(Convert.ToDecimal(rowCount) / pageSize),
 				rows = result,
+				roles = roles
 			});
 		}
 	}

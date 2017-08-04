@@ -42,7 +42,7 @@ namespace BidProgressManagementSystem.Application
 
         public User Get(Guid id)
         {
-            return _repository.Get(id);
+            return _repository.GetWithRoles(id);
         }
 
         public List<User> GetAll()

@@ -44,7 +44,7 @@ namespace BidProgressManagementSystem
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IMenuAppService, MenuAppService>();
             services.AddScoped<IRoleAppService, RoleAppService>();
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore); ;
             services.AddSession();
         }
 
