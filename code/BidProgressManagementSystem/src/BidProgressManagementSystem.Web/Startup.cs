@@ -43,6 +43,7 @@ namespace BidProgressManagementSystem
             services.AddScoped<IUserRepository,UserRepository>();
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IMenuAppService, MenuAppService>();
+            services.AddScoped<IRoleAppService, RoleAppService>();
             services.AddMvc();
             services.AddSession();
         }
