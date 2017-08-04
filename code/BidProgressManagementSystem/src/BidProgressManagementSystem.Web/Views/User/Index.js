@@ -4,7 +4,7 @@ $(function () {
     $("#btnSave").click(function () { save(); });
     $("#btnDelete").click(function () { deleteMulti(); });
     $("#checkAll").click(function () { checkAll(this) });
-    initTree();
+    loadTables(1, 10);
 });
 //全选
 function checkAll(obj) {
@@ -52,7 +52,7 @@ function loadTables(startPage, pageSize) {
     $("#checkAll").prop("checked", false);
     $.ajax({
         type: "GET",
-        url: "/User/GetUserByDepartment?startPage=" + startPage + "&pageSize=" + pageSize + "&departmentId=" + selectedId + "&_t=" + new Date().getTime(),
+        url: "/User/GetAllPageList?startPage=" + startPage + "&pageSize=" + pageSize + "&_t=" + new Date().getTime(),
         success: function (data) {
             $.each(data.rows, function (i, item) {
                 var tr = "<tr>";
