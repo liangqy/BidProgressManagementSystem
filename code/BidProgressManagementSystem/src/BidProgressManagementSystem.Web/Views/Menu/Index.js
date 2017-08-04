@@ -140,7 +140,6 @@ function save() {
         url: "/Menu/Edit",
         data: postData,
         success: function (data) {
-            debugger
             if (data.result == "Success") {
                 initTree();
                 $("#addRootModal").modal("hide");

@@ -52,7 +52,7 @@ namespace BidProgressManagementSystem.Web.Controllers
         public IActionResult GetAllList() {
             return Json(_service.GetAllList());
         }
-        [HttpPost]
+
         public IActionResult GetAllPageList(int startPage, int pageSize)
         {
             int rowCount = 0;
