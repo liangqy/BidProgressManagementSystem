@@ -63,7 +63,7 @@ namespace BidProgressManagementSystem.Application
         }
 
         public User GetProjectsWithPage(Guid id, int pageStart, int pageSize) {
-            
+			return null;
         }
         
 
@@ -71,5 +71,11 @@ namespace BidProgressManagementSystem.Application
         {
             return _repository.CheckSupervisor(id);
         }
-    }
+
+		public List<User> GetAllPageList(int startPage, int pageSize, out int rowCount)
+		{
+
+			return _repository.LoadPageList(startPage, pageSize, out rowCount, null, it => it.Id).ToList();
+		}
+	}
 }

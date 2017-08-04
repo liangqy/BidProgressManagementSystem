@@ -53,5 +53,8 @@ namespace BidProgressManagementSystem.Application
 
         bool CheckSupervisor(Guid id);
 
-    }
+		List<User> GetAllPageList(int startPage, int pageSize, out int rowCount);
+
+
+	}
 }
