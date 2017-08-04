@@ -63,5 +63,11 @@ namespace BidProgressManagementSystem.Application
                 _repository.Delete(user.Id);
             return _repository.InsertOrUpdate(user);
         }
-    }
+
+		public List<User> GetAllPageList(int startPage, int pageSize, out int rowCount)
+		{
+
+			return _repository.LoadPageList(startPage, pageSize, out rowCount, null, it => it.Id).ToList();
+		}
+	}
 }

@@ -99,5 +99,19 @@ namespace BidProgressManagementSystem.Web.Controllers
             var dto = _service.Get(id);
             return Json(dto);
         }
-    }
+
+		public IActionResult GetAllPageList(int startPage, int pageSize)
+		{
+			int rowCount = 0;
+			var result = _service.GetAllPageList(startPage, pageSize, out rowCount);
+
+			return Json(new
+			{
+				rowCount = rowCount,
+				pageCount = Math.Ceiling(Convert.ToDecimal(rowCount) / pageSize),
+				rows = result,
+			});
+		}
+
+	}
 }
