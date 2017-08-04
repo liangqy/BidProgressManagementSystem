@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
+
 namespace BidProgressManagementSystem.Application
 {
     public class MenuAppService : IMenuAppService
@@ -21,12 +22,12 @@ namespace BidProgressManagementSystem.Application
 
         public List<Menu> GetAllList()
         {
-            return (List<Menu>)_menuRepository.GetAllList().OrderBy(it=>it.SerialNumber);
+			return _menuRepository.GetAllList().OrderBy(it=>it.SerialNumber).ToList();
         }
 
         public List<Menu> GetMenusByParent(Guid parentId, int startPage, int pageSize, out int rowCount)
         {
-            return (List<Menu>)_menuRepository.LoadPageList(startPage, pageSize, out rowCount, it => it.ParentId == parentId, it => it.SerialNumber);
+            return _menuRepository.LoadPageList(startPage, pageSize, out rowCount, it => it.ParentId == parentId, it => it.SerialNumber).ToList();
         }
 
         public bool InsertOrUpdate(Menu menu)
