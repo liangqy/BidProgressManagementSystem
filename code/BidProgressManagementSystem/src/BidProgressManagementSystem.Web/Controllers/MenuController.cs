@@ -11,7 +11,7 @@ namespace BidProgressManagementSystem.Web.Controllers
     public class MenuController : BaseController
     {
         private readonly IMenuAppService _menuAppService;
-        public MenuController(IMenuAppService menuAppService, UserAppService userAppService)
+        public MenuController(IMenuAppService menuAppService, IUserAppService userAppService)
         {
             _menuAppService = menuAppService;
         }

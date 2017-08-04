@@ -32,7 +32,8 @@ namespace BidProgressManagementSystem.Application
         /// <returns></returns>
         public List<Role> GetAllPageList(int startPage, int pageSize, out int rowCount)
         {
-            return (List<Role>)_repository.LoadPageList(startPage, pageSize, out rowCount, null, it => it.Id);
+            
+            return _repository.LoadPageList(startPage, pageSize, out rowCount, null, it => it.Id).ToList(); 
         }
 
         /// <summary>
