@@ -1,15 +1,14 @@
 ﻿
+using BidProgressManagementSystem.Application;
+using BidProgressManagementSystem.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Configuration;
-using BidProgressManagementSystem.EntityFramework;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Logging;
 using System.IO;
-using BidProgressManagementSystem.Application.UserApp;
 
 namespace BidProgressManagementSystem
 {
@@ -38,9 +37,12 @@ namespace BidProgressManagementSystem
             services.AddDbContext<MyDBContext>(options =>
                 options.UseNpgsql(sqlConnectionString)
             );
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IUserRepository,UserRepository>();
             services.AddScoped<IUserAppService, UserAppService>();
-
+            services.AddScoped<IMenuAppService, MenuAppService>();
             services.AddMvc();
             services.AddSession();
         }

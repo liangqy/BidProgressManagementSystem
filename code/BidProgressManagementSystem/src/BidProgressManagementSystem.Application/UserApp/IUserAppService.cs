@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BidProgressManagementSystem.Application.UserApp
+namespace BidProgressManagementSystem.Application
 {
     public interface IUserAppService
     {

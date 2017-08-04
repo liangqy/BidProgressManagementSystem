@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using BidProgressManagementSystem.EntityFramework;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-using BidProgressManagementSystem.EntityFramework.Repositories;
 
 namespace BidProgressManagementSystem
 {

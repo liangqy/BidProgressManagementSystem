@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BidProgressManagementSystem.EntityFramework;
 
-namespace BidProgressManagementSystem.Application.UserApp
+namespace BidProgressManagementSystem.Application
 {
     /// <summary>
     /// 用户管理服务
@@ -13,14 +13,16 @@ namespace BidProgressManagementSystem.Application.UserApp
     {
         //用户管理仓储接口
         private readonly IUserRepository _repository;
+        private readonly IProjectRepository _projectRepository;
 
         /// <summary>
         /// 构造函数 实现依赖注入
         /// </summary>
         /// <param name="userRepository">仓储对象</param>
-        public UserAppService(IUserRepository userRepository)
+        public UserAppService(IUserRepository userRepository, IProjectRepository projectRepository)
         {
             _repository = userRepository;
+            _projectRepository = projectRepository;
         }
 
         public User CheckUser(string userName, string password)
@@ -50,6 +52,8 @@ namespace BidProgressManagementSystem.Application.UserApp
 
         public User GetProjects(Guid id)
         {
+            //if (_repository.CheckSupervisor(id))
+            //    return _projectRepository.GetAllList();
             return _repository.GetWithProjects(id);
         }
 

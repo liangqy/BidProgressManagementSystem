@@ -32,5 +32,9 @@ namespace BidProgressManagementSystem.EntityFramework
             }
             return user;
         }
+        public Boolean CheckSupervisor(Guid id) {
+            var user = _dbContext.Set<User>().FirstOrDefault(it => it.Id == id);
+            return user.IsSupervisor;
+        }
     }  
 }

@@ -17,9 +17,21 @@ namespace BidProgressManagementSystem.EntityFramework
         /// <param name="password">密码</param>
         /// <returns>存在返回用户实体，否则返回NULL</returns>
         User CheckUser(string userName, string password);
-
+        /// <summary>
+        /// 获取用户的角色
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         User GetWithRoles(Guid id);
-
+        /// <summary>
+        /// 获取用户相关的项目
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         User GetWithProjects(Guid id);
+        /// <summary>
+        /// 检查是否超管
+        /// </summary>
+        Boolean CheckSupervisor(Guid id);
     }
 }

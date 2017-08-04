@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using BidProgressManagementSystem.EntityFramework;
 using Microsoft.AspNetCore.Http;
 using BidProgressManagementSystem.Utils;
-using BidProgressManagementSystem.Application.UserApp;
+using BidProgressManagementSystem.Application;
 
 namespace BidProgressManagementSystem.Controllers
 {

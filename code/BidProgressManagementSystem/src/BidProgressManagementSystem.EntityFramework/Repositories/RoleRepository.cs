@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BidProgressManagementSystem.EntityFramework.Repositories
+namespace BidProgressManagementSystem.EntityFramework
 {
     public class RoleRepository : BaseRepository<Role>, IRoleRepository
     {
