@@ -22,8 +22,7 @@ namespace BidProgressManagementSystem.Web.Controllers
         {
             return View();
         }
-
-		[HttpPost]
+        [HttpPost]
         public IActionResult Index(User model)
         {
             if (ModelState.IsValid)
