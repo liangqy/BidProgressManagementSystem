@@ -50,5 +50,16 @@ namespace BidProgressManagementSystem.Web.Controllers
             }
             return View(model);
         }
-    }
+
+		public IActionResult Logout()
+		{
+			//É¾³ýSession
+			HttpContext.Session.Remove("CurrentUserId");
+			HttpContext.Session.Remove("CurrentUser");
+			//Ìø×ªµ½µÇÂ½Ò³
+			return RedirectToAction("Index", "Login"); ;
+		}
+
+
+	}
 }
