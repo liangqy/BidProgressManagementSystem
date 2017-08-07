@@ -53,5 +53,8 @@ namespace BidProgressManagementSystem.Application
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
+
+        List<Project> GetAllPageListByUser(Guid userId,int startPage, int pageSize, out int rowCount);
+
     }
 }

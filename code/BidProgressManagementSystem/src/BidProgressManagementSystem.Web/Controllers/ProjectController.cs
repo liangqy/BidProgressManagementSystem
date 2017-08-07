@@ -115,5 +115,11 @@ namespace BidProgressManagementSystem.Web.Controllers
             var project = _service.GetWithUser(projectId);
             return Json(project);
         }
+
+        public IActionResult GetAllPageListByUser(Guid userId, int startPage, int pageSize, out int rowCount)
+        {
+            var projects = _service.GetAllPageListByUser(userId, startPage, pageSize, out rowCount);
+            return Json(projects);
+        }
     }
 }

@@ -6,6 +6,7 @@ namespace BidProgressManagementSystem.EntityFramework
 {
     public class Project : BaseModel
     {
+
         /// <summary>
         /// 项目编号
         /// </summary>

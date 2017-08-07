@@ -42,6 +42,18 @@ namespace BidProgressManagementSystem.Application
             return _repository.LoadPageList(startPage, pageSize, out rowCount, null, it => it.Code).ToList();
         }
 
+        public List<Project> GetAllPageListByUser(Guid userId, int startPage, int pageSize, out int rowCount)
+        {
+            var userProjects = _repository.GetAllPageListByUser(userId, startPage, pageSize,out rowCount);
+            List<Project> projects = new List<Project>();
+            foreach (UserProject userProject in userProjects)
+            {
+                Project project = _repository.Get(userProject.ProjectId);
+                projects.Add(project);
+            }
+            return projects;
+        }
+
         public Project GetWithUser(Guid projectId)
         {
             var project = _repository.Get(projectId);
@@ -58,5 +70,8 @@ namespace BidProgressManagementSystem.Application
             var temp = _repository.InsertOrUpdate(project);
             return temp == null ? false : true;
         }
+
+
+
     }
 }
