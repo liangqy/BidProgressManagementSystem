@@ -1,4 +1,10 @@
 ﻿var selectedProject = 0;
+$("#datepicker input").datepicker({
+    language: 'zh-CN',
+    autoclose: true,
+    todayHighlight: true
+});
+
 $(function () {
     $("#btnAdd").click(function () { add(); });
     $("#btnDelete").click(function () { deleteMulti(); });
@@ -24,7 +30,7 @@ function loadTables(startPage, pageSize) {
                 tr += "<td>" + (item.developmentOrganization == null ? "" : item.developmentOrganization) + "</td>";
                 tr += "<td>" + (item.agentOrganization == null ? "" : item.agentOrganization) + "</td>";
                 tr += "<td>" + (item.bidType == null ? "" : item.bidType) + "</td>";
-                tr += "<td>" + (item.bidTime == null ? "" : item.bidTime) + "</td>";
+                tr += "<td>" + (item.bidTime == null ? "" : $.format.date(item.bidTime,"yyyy-MM-dd")) + "</td>";
                 tr += "<td>" + (item.remarks == null ? "" : item.remarks) + "</td>";
                 tr += "<td><button class='btn btn-info btn-xs' href='javascript:;' onclick='edit(\"" + item.id + "\")'><i class='fa fa-edit'></i> 编辑 </button> <button class='btn btn-danger btn-xs' href='javascript:;' onclick='deleteSingle(\"" + item.id + "\")'><i class='fa fa-trash-o'></i> 删除 </button> </td>"
                 tr += "</tr>";
@@ -82,7 +88,7 @@ function edit(id) {
             $("#developmentOrganization").val(data.developmentOrganization);
             $("#agentOrganization").val(data.agentOrganization);
             $("#bidType").val(data.bidType);
-            $("#bidTime").val(data.bidTime);
+            $("#bidTime").val($.format.date(data.bidTime, "yyyy-MM-dd"));
             $("#bidSecurityFees").val(data.bidSecurityFees);
             $("#bidSecurityReceiveAccount").val(data.bidSecurityReceiveAccount);
             $("#agentFees").val(data.agentFees);
