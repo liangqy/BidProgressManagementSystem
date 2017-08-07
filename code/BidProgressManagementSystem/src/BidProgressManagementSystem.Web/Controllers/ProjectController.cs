@@ -11,7 +11,7 @@ namespace BidProgressManagementSystem.Web.Controllers
     public class ProjectController : BaseController
     {
         private readonly IProjectAppService _service;
-
+        
         public ProjectController(IProjectAppService service)
         {
             _service = service;
@@ -110,5 +110,10 @@ namespace BidProgressManagementSystem.Web.Controllers
             return Json(dto);
         }
 
+        public IActionResult GetWithUser(Guid projectId)
+        {
+            var project = _service.GetWithUser(projectId);
+            return Json(project);
+        }
     }
 }

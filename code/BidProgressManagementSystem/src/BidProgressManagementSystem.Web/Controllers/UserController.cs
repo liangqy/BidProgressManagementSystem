@@ -13,11 +13,11 @@ namespace BidProgressManagementSystem.Web.Controllers
     public class UserController : BaseController
     {
         private readonly IUserAppService _service;
-        private readonly IRoleAppService _roleService;
-        public UserController(IUserAppService service, IRoleAppService roleService)
+        //private readonly IRoleAppService _roleService;
+        public UserController(IUserAppService service/*, IRoleAppService roleService*/)
         {
             _service = service;
-            _roleService = roleService;
+           // _roleService = roleService;
         }
         // GET: /<controller>/
         public IActionResult Index()
@@ -122,15 +122,20 @@ namespace BidProgressManagementSystem.Web.Controllers
 		{
 			int rowCount = 0;
 			var result = _service.GetAllPageList(startPage, pageSize, out rowCount);
-			var roles = _roleService.GetAllList();
+			//var roles = _roleService.GetAllList();
 
 			return Json(new
 			{
 				rowCount = rowCount,
 				pageCount = Math.Ceiling(Convert.ToDecimal(rowCount) / pageSize),
 				rows = result,
-				roles = roles
+				//roles = roles
 			});
 		}
+
+        public IActionResult GetWithProject(Guid userId)
+        {
+            return Json(_service.GetWithProject(userId));
+        }
 	}
 }
