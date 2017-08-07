@@ -92,7 +92,50 @@ namespace BidProgressManagementSystem.EntityFramework
                     BidType = "物资",
                     BidTime = DateTime.Now,
                 });
-                context.SaveChanges();
+				Menu parentMenu = new Menu {
+					Code = "001",
+					Name = "系统管理",
+					SerialNumber=1,
+					Type=1,
+				};
+				context.Menus.Add(parentMenu);
+				context.Menus.Add(new Menu
+				{
+					Code="001",
+					Name = "用户管理",
+					ParentId = parentMenu.Id,
+					SerialNumber = 1,
+					Type = 0,
+					Url="User",
+				});
+				context.Menus.Add(new Menu
+				{
+					Code = "002",
+					Name = "角色管理",
+					ParentId = parentMenu.Id,
+					SerialNumber = 1,
+					Type = 0,
+					Url = "Role",
+				});
+				context.Menus.Add(new Menu
+				{
+					Code = "003",
+					Name = "菜单管理",
+					ParentId = parentMenu.Id,
+					SerialNumber = 1,
+					Type = 0,
+					Url = "Menu",
+				});
+				context.Menus.Add(new Menu
+				{
+					Code = "004",
+					Name = "投标管理",
+					ParentId = parentMenu.Id,
+					SerialNumber = 1,
+					Type = 0,
+					Url = "Project",
+				});
+				context.SaveChanges();
 
 
 
