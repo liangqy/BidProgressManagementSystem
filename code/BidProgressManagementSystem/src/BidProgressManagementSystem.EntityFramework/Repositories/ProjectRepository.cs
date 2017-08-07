@@ -10,16 +10,10 @@ namespace BidProgressManagementSystem.EntityFramework
         public ProjectRepository(MyDBContext dbContext) : base(dbContext)
         {
         }
-        public Project GetWithUsers(Guid id)
-        {
-            var project = _dbContext.Set<Project>().FirstOrDefault(it => it.Id == id);
-            if (project != null)
-            {
-                project.UserProjects = _dbContext.Set<UserProject>().Where(it => it.UserId == id).ToList();
-            }
-            return project;
-        }
 
-       
+        public List<UserProject> GetAllListByUser(Guid userId)
+        {
+            return _dbContext.Set<UserProject>().Where(it => it.UserId == userId).ToList();
+        }
     }
 }

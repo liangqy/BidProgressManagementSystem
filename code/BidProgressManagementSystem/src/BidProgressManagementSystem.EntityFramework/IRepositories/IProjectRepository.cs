@@ -6,6 +6,7 @@ namespace BidProgressManagementSystem.EntityFramework
 {
     public interface IProjectRepository:IRepository<Project>
     {
-        Project GetWithUsers(Guid id);
+        //List<UserProject> GetAllUserListByProject(Guid id);
+        List<UserProject> GetAllListByUser(Guid userId);
     }
 }

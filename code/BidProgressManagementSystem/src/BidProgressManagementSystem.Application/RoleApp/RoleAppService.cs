@@ -9,9 +9,12 @@ namespace BidProgressManagementSystem.Application
     public class RoleAppService : IRoleAppService
     {
         private readonly IRoleRepository _repository;
-        public RoleAppService(IRoleRepository repository)
+        private readonly IUserRepository _user_repository;
+        public RoleAppService(IRoleRepository repository, IUserRepository user_repository)
         {
             _repository = repository;
+            _user_repository = user_repository;
+
         }
 
         /// <summary>
@@ -32,8 +35,8 @@ namespace BidProgressManagementSystem.Application
         /// <returns></returns>
         public List<Role> GetAllPageList(int startPage, int pageSize, out int rowCount)
         {
-            
-            return _repository.LoadPageList(startPage, pageSize, out rowCount, null, it => it.Id).ToList(); 
+
+            return _repository.LoadPageList(startPage, pageSize, out rowCount, null, it => it.Id).ToList();
         }
 
         /// <summary>
@@ -75,6 +78,12 @@ namespace BidProgressManagementSystem.Application
             return _repository.Get(id);
         }
 
+        public List<Role> GetAllListByUser(Guid userId)
+        {
+            var user = _user_repository.GetWithRoles(userId);
+            _repository.GetAllList(it => it.Id == userId);
+            return null;
+        }
         /// <summary>
         /// 根据角色获取权限
         /// </summary>

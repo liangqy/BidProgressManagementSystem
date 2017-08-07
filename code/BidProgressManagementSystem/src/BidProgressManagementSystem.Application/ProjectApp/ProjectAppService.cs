@@ -6,10 +6,16 @@ using System.Text;
 
 namespace BidProgressManagementSystem.Application
 {
-    
-    public class ProjectAppService:IProjectAppService
+
+    public class ProjectAppService : IProjectAppService
     {
-        private readonly ProjectRepository _repository;
+        private readonly IProjectRepository _repository;
+        private readonly IUserRepository _userRepository;
+        public ProjectAppService(IProjectRepository projectRepository,IUserRepository userRepository)
+        {
+            _repository = projectRepository;
+            _userRepository = userRepository;
+        }
 
         public void Delete(Guid id)
         {
@@ -18,7 +24,7 @@ namespace BidProgressManagementSystem.Application
 
         public void DeleteBatch(List<Guid> ids)
         {
-            _repository.Delete(it=>ids.Contains(it.Id));
+            _repository.Delete(it => ids.Contains(it.Id));
         }
 
         public Project Get(Guid id)
@@ -33,18 +39,24 @@ namespace BidProgressManagementSystem.Application
 
         public List<Project> GetAllPageList(int startPage, int pageSize, out int rowCount)
         {
-            return _repository.LoadPageList(startPage, pageSize, out rowCount, null, it => it.Id).ToList();
+            return _repository.LoadPageList(startPage, pageSize, out rowCount, null, it => it.Code).ToList();
         }
 
-        public Project GetWithUser(Guid id)
+        public Project GetWithUser(Guid projectId)
         {
-            return _repository.GetWithUsers(id);
+            var project = _repository.Get(projectId);
+            project.UserProjects = _userRepository.GetAllListByProject(projectId);
+            foreach (UserProject userProject in project.UserProjects)
+            {
+                userProject.User = _userRepository.Get(userProject.UserId);
+            }
+            return project;
         }
 
         public bool InsertOrUpdate(Project project)
         {
-            var project_v = _repository.InsertOrUpdate(project);
-            return project_v == null ? false : true; 
+            var temp = _repository.InsertOrUpdate(project);
+            return temp == null ? false : true;
         }
     }
 }

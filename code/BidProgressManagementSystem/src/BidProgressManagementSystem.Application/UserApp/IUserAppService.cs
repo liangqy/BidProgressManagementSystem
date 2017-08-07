@@ -11,7 +11,7 @@ namespace BidProgressManagementSystem.Application
         User CheckUser(string userName, string password);
 
 
-        User InsertOrUpdate(User user);
+        bool InsertOrUpdate(User user);
 
         /// <summary>
         /// 根据Id集合批量删除
@@ -34,27 +34,21 @@ namespace BidProgressManagementSystem.Application
         /// <summary>
         /// 获取所有用户
         /// </summary>
+        /// <param name="id">用于判断是不是超级用户</param>
         /// <returns></returns>
         List<User> GetAll();
         /// <summary>
-        /// 获取特定用户的所有项目
+        /// 分页获取所有用户
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="startPage">起始页</param>
+        /// <param name="pageSize">每页的大小</param>
+        /// <param name="rowCount">输出一共多少个</param>
         /// <returns></returns>
-        User GetProjects(Guid id);
-        /// <summary>
-        /// 分页查询用户的项目
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="pageStart"></param>
-        /// <param name="pageSize"></param>
-        /// <returns></returns>
-        User GetProjectsWithPage(Guid id, int pageStart, int pageSize);
-
+        List<User> GetAllPageList(int startPage, int pageSize, out int rowCount);
+        
         bool CheckSupervisor(Guid id);
 
-		List<User> GetAllPageList(int startPage, int pageSize, out int rowCount);
 
-
+        User GetWithProject(Guid id);
 	}
 }

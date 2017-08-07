@@ -35,12 +35,19 @@ namespace BidProgressManagementSystem.EntityFramework
         }
         public bool CheckSupervisor(Guid id) {
             var user = _dbContext.Set<User>().FirstOrDefault(it => it.Id == id);
+            if (user == null)
+                return false;
             return user.IsSupervisor;
         }
-
-        public List<Project> GetProjectsWithPage(Guid id)
+        public List<UserProject> GetAllListByProject(Guid projectId)
         {
-            throw new NotImplementedException();
+            return _dbContext.Set<UserProject>().Where(it => it.ProjectId == projectId).ToList();
         }
+
+
+        //public List<UserProject> GetAllProjectListByUser(Guid userId)
+        //{
+        //    return _dbContext.Set<UserProject>().Where(it => it.UserId == userId).ToList();
+        //}
     }  
 }

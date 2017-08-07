@@ -14,20 +14,24 @@ namespace BidProgressManagementSystem.Application
         //用户管理仓储接口
         private readonly IUserRepository _repository;
         private readonly IProjectRepository _projectRepository;
-
         /// <summary>
         /// 构造函数 实现依赖注入
         /// </summary>
         /// <param name="userRepository">仓储对象</param>
-        public UserAppService(IUserRepository userRepository, IProjectRepository projectRepository)
+        public UserAppService(IUserRepository userRepository,IProjectRepository projectRepository)
         {
             _repository = userRepository;
             _projectRepository = projectRepository;
         }
 
-        public User CheckUser(string userName, string password)
+        public bool CheckSupervisor(Guid id)
         {
-            return _repository.CheckUser(userName, password);
+            return _repository.CheckSupervisor(id);
+        }
+
+        public User CheckUser(string userName, string passWord)
+        {
+            return _repository.CheckUser(userName, passWord);
         }
 
         public void Delete(Guid id)
@@ -42,7 +46,7 @@ namespace BidProgressManagementSystem.Application
 
         public User Get(Guid id)
         {
-            return _repository.GetWithRoles(id);
+            return _repository.Get(id);
         }
 
         public List<User> GetAll()
@@ -50,32 +54,26 @@ namespace BidProgressManagementSystem.Application
             return _repository.GetAllList();
         }
 
-        public User GetProjects(Guid id)
-        {              
-            return _repository.GetWithProjects(id);
-        }
-
-        public User InsertOrUpdate(User user)
+        public List<User> GetAllPageList(int startPage, int pageSize, out int rowCount)
         {
-            if (Get(user.Id) != null)
-                _repository.Delete(user.Id);
-            return _repository.InsertOrUpdate(user);
+            return _repository.LoadPageList(startPage, pageSize, out rowCount, null, it => it.Id).ToList();
         }
 
-        public User GetProjectsWithPage(Guid id, int pageStart, int pageSize) {
-			return null;
-        }
-        
-
-        public bool CheckSupervisor(Guid id)
+        public User GetWithProject(Guid id)
         {
-            return _repository.CheckSupervisor(id);
+            var user = _repository.Get(id);
+            user.UserProjects = _projectRepository.GetAllListByUser(id);
+            foreach (UserProject userProject in user.UserProjects)
+            {
+                userProject.Project = _projectRepository.Get(userProject.ProjectId);
+            }
+            return user;
         }
 
-		public List<User> GetAllPageList(int startPage, int pageSize, out int rowCount)
-		{
-
-			return _repository.LoadPageList(startPage, pageSize, out rowCount, null, it => it.Id).ToList();
-		}
-	}
+        public bool InsertOrUpdate(User user)
+        {
+            var temp = _repository.InsertOrUpdate(user);
+            return temp == null ? false : true;
+        }
+    }
 }

@@ -13,7 +13,6 @@ namespace BidProgressManagementSystem.Application
         /// </summary>
         /// <returns></returns>
         List<Role> GetAllList();
-
         /// <summary>
         /// 获取分页列表
         /// </summary>
@@ -22,40 +21,40 @@ namespace BidProgressManagementSystem.Application
         /// <param name="rowCount">数据总数</param>
         /// <returns></returns>
         List<Role> GetAllPageList(int startPage, int pageSize, out int rowCount);
-
         /// <summary>
         /// 新增或修改
         /// </summary>
         /// <param name="dto">实体</param>
         /// <returns></returns>
         bool InsertOrUpdate(Role role);
-
         /// <summary>
         /// 根据Id集合批量删除
         /// </summary>
         /// <param name="ids">Id集合</param>
         void DeleteBatch(List<Guid> ids);
-
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="id">Id</param>
         void Delete(Guid id);
-
         /// <summary>
         /// 根据Id获取实体
         /// </summary>
         /// <param name="id">Id</param>
         /// <returns></returns>
         Role Get(Guid id);
-
+        /// <summary>
+        /// 通过用户找其角色
+        /// </summary>
+        /// <param name="userId">用户id</param>
+        /// <returns></returns>
+        List<Role> GetAllListByUser(Guid userId);
         /// <summary>
         /// 根据角色获取权限
         /// </summary>
         /// <param name="roleId">角色id</param>
         /// <returns></returns>
         List<Guid> GetAllMenuListByRole(Guid roleId);
-
         /// <summary>
         /// 更新角色权限关联关系
         /// </summary>
