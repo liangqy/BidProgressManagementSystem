@@ -72,9 +72,10 @@ function checkAll(obj) {
 //新增
 function add() {
     $("#projectForm")[0].reset();
-    $("#title").text("新增角色");
+    $("#title").text("新增项目");
     //弹出新增窗体
     $("#editModal").modal("show");
+    $("#id").val("");
 };
 //编辑
 function edit(id) {
@@ -108,7 +109,6 @@ function edit(id) {
 function save() {
     var postData = {
         "dto": {
-            "Id": $("#id").val(),
             "Name": $("#name").val(),
             "Code": $("#code").val(),
             "DevelopmentOrganization": $("#developmentOrganization").val(),
@@ -124,9 +124,11 @@ function save() {
             "ConstructionSubcontractor": $("#constructionSubcontractor").val(),
             "BidPrice": $("#bidPrice").val(),
             "Remark": $("#remark").val(),
-
         }
     };
+    if ($("#id").val() != "")
+        postData.dto["Id"] = $("#id").val();
+
     $.ajax({
         type: "Post",
         url: "/Project/Edit",
