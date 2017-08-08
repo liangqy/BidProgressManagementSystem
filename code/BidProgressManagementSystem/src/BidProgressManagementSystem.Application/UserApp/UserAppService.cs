@@ -46,7 +46,7 @@ namespace BidProgressManagementSystem.Application
 
         public User Get(Guid id)
         {
-            return _repository.Get(id);
+			return _repository.GetWithRoles(id);
         }
 
         public List<User> GetAll()
@@ -72,7 +72,9 @@ namespace BidProgressManagementSystem.Application
 
         public bool InsertOrUpdate(User user)
         {
-            var temp = _repository.InsertOrUpdate(user);
+			if (Get(user.Id) != null)
+				_repository.Delete(user.Id);
+			var temp = _repository.InsertOrUpdate(user);
             return temp == null ? false : true;
         }
     }

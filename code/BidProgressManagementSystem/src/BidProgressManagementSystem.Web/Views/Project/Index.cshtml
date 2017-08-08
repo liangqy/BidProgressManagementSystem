@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.CurrentMenu = "Bid";
+    ViewBag.CurrentMenu = "Project";
 }
 <div class="row">
     <div class="col-md-12">
@@ -21,6 +21,9 @@
                         <thead>
                             <tr role="row">
                                 <th class="table-checkbox" style="width:40px;text-align:center;"><input id="checkAll" class="group-checkable" type="checkbox"></th>
+                                <th tabindex="0" aria-label="">
+                                    项目编号
+                                </th>
                                 <th tabindex="0" aria-label="" >
                                     项目名称
                                 </th>
@@ -108,5 +111,5 @@
 </div>
 @Html.Partial("_Edit")
 @section scripts{
-    <script src="~/Views/Bid/Index.js"></script>
+    <script src="~/Views/Project/Index.js"></script>
 }

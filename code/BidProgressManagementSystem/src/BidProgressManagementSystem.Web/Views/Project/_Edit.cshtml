@@ -2,43 +2,54 @@
     <div class="modal-dialog">
         <div class="box box-info">
             <div class="box-header with-border">
-                <h5 class="box-title" id="Title"></h5>
+                <h5 class="box-title" id="title"></h5>
                 <button class="close" aria-label="Close" type="button" data-dismiss="modal">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form class="form-horizontal">
-                <input type="hidden" id="Id" />
+            <form class="form-horizontal" id="projectForm">
+                <input type="hidden" id="id" />
                 <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="inputPassword3">项目编号</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="code" type="text" placeholder="项目编号">
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="inputPassword3">项目名称</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="Code" type="text" placeholder="项目名称">
+                            <input class="form-control" id="name" type="text" placeholder="项目名称">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">建设单位</label>
                         <div class="col-sm-9">
-                            <input class="form-control" id="Name" type="text" placeholder="建设单位">
+                            <input class="form-control" id="developmentOrganization" type="text" placeholder="建设单位">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">招标代理公司</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" type="text" placeholder="招标代理公司">
+                            <input id="agentOrganization" class="form-control" type="text" placeholder="招标代理公司">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">投标类型</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" placeholder="投标类型">
+                            <input id="bidType" class="form-control" placeholder="投标类型">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="datepicker">
                         <label class="col-sm-3 control-label" for="">投标时间</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" placeholder="投标时间">
-                        </div>
+                            <div class="input-group date">
+                                <input id="bidTime" class="form-control" placeholder="投标时间" data-date-format="yyyy-mm-dd">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                            </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">项目负责人</label>
@@ -61,61 +72,61 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">投标保证金</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" placeholder="投标保证金">
+                            <input id="bidSecurityFees" class="form-control" placeholder="投标保证金">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">保证金收款账户</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" placeholder="保证金收款账户">
+                            <input id="bidSecurityReceiveAccount" class="form-control" placeholder="保证金收款账户">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">招标代理服务费</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" placeholder="招标代理服务费">
+                            <input id="agentFees" class="form-control" placeholder="招标代理服务费">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">退款</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" placeholder="退款">
+                            <input id="refund" class="form-control" placeholder="退款">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">保证退还时间</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" placeholder="保证退还时间">
+                            <input id="bidSecurityReturnTime" class="form-control" placeholder="保证退还时间">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">联合体</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" placeholder="联合体">
+                            <input id="unionOrganization" class="form-control" placeholder="联合体">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">施工分包单位</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" placeholder="施工分包单位">
+                            <input id="constructionSubcontractor" class="form-control" placeholder="施工分包单位">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">投标价格</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" placeholder="投标价格">
+                            <input id="bidPrice" class="form-control" placeholder="投标价格">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">竞争对手</label>
                         <div class="col-sm-9">
-                            <input id="Remarks" class="form-control" placeholder="竞争对手">
+                            <input id="competitor" class="form-control" placeholder="竞争对手">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="">备注</label>
                         <div class="col-sm-9">
-                            <textarea id="Remarks" class="form-control" placeholder="备注"></textarea>
+                            <textarea id="remark" class="form-control" placeholder="备注"></textarea>
                         </div>
                     </div>
                 </div>

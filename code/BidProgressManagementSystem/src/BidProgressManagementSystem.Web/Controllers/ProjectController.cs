@@ -21,8 +21,7 @@ namespace BidProgressManagementSystem.Web.Controllers
             return View();
         }
 
-
-        public IActionResult Edit(Project project)
+        public IActionResult Edit(Project dto)
         {
             if (!ModelState.IsValid)
             {
@@ -32,10 +31,10 @@ namespace BidProgressManagementSystem.Web.Controllers
                     Message = GetModelStateError()
                 });
             }
-            if (project.Id == Guid.Empty)
-                project.CreateTime = DateTime.Now;
+            if (dto.Id == Guid.Empty)
+				dto.CreateTime = DateTime.Now;
             //dto.CreateUserId = 
-            if (_service.InsertOrUpdate(project))
+            if (_service.InsertOrUpdate(dto))
             {
                 return Json(new { Result = "Success" });
             }
